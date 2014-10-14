@@ -1,0 +1,11 @@
+ul.navbar{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: #CAEBFF;
+}
+
+ul.navbar li {
+	display: inline;
+	padding-right: 75px;
+}

@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<title>Sheldon's comics collection</title>
 </head>
 <body>
 	<div ng-app="app">
+		<ul class="navbar">
+			<li><a href="#/comics">Comics</a></li>
+			<li><a href="#/people">People</a></li>
+			<li><a href="#/loans">Loans</a></li>
+		</ul>
 		<ng-view></ng-view>
 	</div>
 	<script type="text/javascript" src="angular.js"></script>

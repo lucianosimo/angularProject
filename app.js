@@ -9,16 +9,18 @@ app.config(function($routeProvider) {
 
 	.when('/comics', {
 		templateUrl: 'comics/comics.tpl.html',
-		controller: 'ComicsCtrl'
+		controller: 'ComicsCtrl',
+		requireLogin: true
 	})
 
 	.when('/comic/:comicId', {
 		templateUrl: 'comics/comic/comic.tpl.html',
-		controller: 'ComicCtrl'
+		controller: 'ComicCtrl',
+		requireLogin: true
 	});
 
 	$routeProvider.otherwise({
-            redirectTo: '/'
+		redirectTo: '/'
 	});
 
 });
