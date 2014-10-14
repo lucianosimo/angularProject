@@ -1,0 +1,6 @@
+<h1>Comics page</h1>
+
+<div ng-repeat="comic in comics">
+	<a href="#/comic/{{ comic.id }}">{{ comic.title }}</a>
+	<p>{{ comic.description }}</p>
+</div>

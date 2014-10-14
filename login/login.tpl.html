@@ -1,5 +1,12 @@
+<h1>Sheldon's comics system</h1>
 <form novalidate ng-submit="login()">
-	<input type="text">
-	<input type="password">
-	<input type="submit" value="Submit" />
+	<div>
+		Username: <input type="text" ng-model="user.username" required>
+	</div>
+	<div>
+		Password: <input type="password" ng-model="user.password" required>	
+	</div>
+	<div>
+		<input type="submit" value="Submit" />
+	</div>
 </form>
