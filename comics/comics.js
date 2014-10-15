@@ -6,6 +6,7 @@ app.factory('Comics', [function() {
 		{id: 1, title: 'Batman', description: 'Another superhero'},
 		{id: 2, title: 'The Simpsons', description: 'The best tv show ever'},
 		{id: 3, title: 'Byclope', description: 'An superhero with glasses'},
+		{id: 4, title: 'SpiderMan', description: 'Another another hero'},
 	];
 	return {
 		all: function() {
