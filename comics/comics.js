@@ -15,7 +15,7 @@ app.factory('Comics', [function() {
 		getComic: function(id) {
 			return comics[id];
 		}
-	}
+	};
 }])
 
 .controller('ComicsCtrl', ['$scope', 'Comics', function($scope, Comics) {
