@@ -8,4 +8,4 @@ an account can view the available comics but only Sheldon can register, delete o
 
 *To verify the js files inside comics run this command in the root of your project*
 
-´gulp comics-js´
+`gulp comics-js`
