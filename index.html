@@ -5,8 +5,9 @@
 	<title>Sheldon's comics collection</title>
 </head>
 <body>
-	<div ng-app="app">
-		<ul class="navbar">
+	<div ng-app="app" ng-controller="MainCtrl">
+		<button class='button' ng-if='isLoggedIn()' ng-click="logoutUser()">Logout</button>
+		<ul ng-if="isLoggedIn()" class="navbar">
 			<li><a href="#/comics">Comics</a></li>
 			<li><a href="#/people">People</a></li>
 			<li><a href="#/loans">Loans</a></li>

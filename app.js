@@ -10,14 +10,12 @@ app.config(function($routeProvider) {
 
 	.when('/comics', {
 		templateUrl: 'comics/comics.tpl.html',
-		controller: 'ComicsCtrl',
-		requireLogin: true
+		controller: 'ComicsCtrl'
 	})
 
 	.when('/comic/:comicId', {
 		templateUrl: 'comics/comic/comic.tpl.html',
-		controller: 'ComicCtrl',
-		requireLogin: true
+		controller: 'ComicCtrl'
 	});
 
 	$routeProvider.otherwise({
@@ -25,3 +23,20 @@ app.config(function($routeProvider) {
 	});
 
 });
+
+app.controller('MainCtrl', ['$scope', '$location','LoginService', function($scope, $location, LoginService) {
+
+	$scope.logoutUser = function() {
+
+		LoginService.setUserLoggedStatus(false);
+		$location.path('/');
+
+	};
+
+	$scope.isLoggedIn = function() {
+
+		return LoginService.isUserLoggedIn();
+
+	};
+
+}]);
