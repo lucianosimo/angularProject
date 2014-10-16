@@ -1,5 +1,6 @@
 var app = angular.module('app',['ngRoute','login', 'comics', 'comic']);
 
+//Routing
 app.config(function($routeProvider) {
 
 	$routeProvider.when('/', {
