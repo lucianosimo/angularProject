@@ -20,4 +20,27 @@ app.factory('Comics', [function() {
 
 .controller('ComicsCtrl', ['$scope', 'Comics', function($scope, Comics) {
 	$scope.comics = Comics.all();
+
+	$scope.addComic = function() {
+
+		var newComic = new function() {
+			this.id = 10;
+			this.title = $scope.comic.title;
+			this.description = $scope.comic.description;
+		};
+
+		console.log(newComic);
+
+		$scope.comics.push(newComic);
+	};
 }]);
+
+/*app.controller('ComicsCtrl', ['$scope', '$http', function($scope, $http) {
+
+	$http.defaults.headers.post['Content-Type'] = 'application/json';
+	$http.get("index.php?action=getComics").success(function(data) {
+		$scope.comics = data;
+		console.log(data);
+ 	});
+
+}]);*/

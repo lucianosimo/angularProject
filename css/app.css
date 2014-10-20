@@ -3,9 +3,15 @@ ul.navbar{
 	margin: 0;
 	padding: 0;
 	background-color: #CAEBFF;
+	width: 500px;
 }
 
 ul.navbar li {
 	display: inline;
 	padding-right: 75px;
+}
+
+.comicWrapper {
+	width: 800px;
+	background-color: #81BEF7;
 }

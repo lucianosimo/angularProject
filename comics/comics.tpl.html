@@ -1,6 +1,13 @@
 <h1>Comics page</h1>
 
-<div ng-repeat="comic in comics">
+<div class="comicWrapper" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
 	<a href="#/comic/{{ comic.id }}">{{ comic.title }}</a>
 	<p>{{ comic.description }}</p>
 </div>
+
+<h2>Add new comic</h2>
+
+Title: <input type="text" class="title" ng-model="comic.title"> <br>
+Description: <textarea class="description" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
+
+<button class='addComic' ng-click="addComic()">Add new comic</button>

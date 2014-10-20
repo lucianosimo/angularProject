@@ -6,12 +6,14 @@
 </head>
 <body>
 	<div ng-app="app" ng-controller="MainCtrl">
-		<button class='button' ng-if='isLoggedIn()' ng-click="logoutUser()">Logout</button>
-		<ul ng-if="isLoggedIn()" class="navbar">
-			<li><a href="#/comics">Comics</a></li>
-			<li><a href="#/people">People</a></li>
-			<li><a href="#/loans">Loans</a></li>
-		</ul>
+		<div ng-if="isLoggedIn()">
+			<ul class="navbar">
+				<li><a href="#/comics">Comics</a></li>
+				<li><a href="#/friends">People</a></li>
+				<li><a href="#/loans">Loans</a></li>
+			</ul>
+			<button class='logoutButton' ng-click="logoutUser()">Logout</button>
+		</div>
 		<ng-view></ng-view>
 	</div>
 	<script type="text/javascript" src="angular.js"></script>
@@ -20,5 +22,6 @@
 	<script type="text/javascript" src="login/login.js"></script>
 	<script type="text/javascript" src="comics/comics.js"></script>
 	<script type="text/javascript" src="comics/comic/comic.js"></script>
+	<script type="text/javascript" src="friends/friends.js"></script>
 </body>
 </html>
