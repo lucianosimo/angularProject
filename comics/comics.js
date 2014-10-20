@@ -24,7 +24,7 @@ app.factory('Comics', [function() {
 	$scope.addComic = function() {
 
 		var newComic = new function() {
-			this.id = 10;
+			this.id = $scope.comics.length;
 			this.title = $scope.comic.title;
 			this.description = $scope.comic.description;
 		};
@@ -33,14 +33,11 @@ app.factory('Comics', [function() {
 
 		$scope.comics.push(newComic);
 	};
+
+	//To delete a comic we pass the item to the function and search for its index.
+	$scope.deleteComic = function(comic) {
+
+		var item = $scope.comics.indexOf(comic);
+		$scope.comics.splice(item, 1);
+	};
 }]);
-
-/*app.controller('ComicsCtrl', ['$scope', '$http', function($scope, $http) {
-
-	$http.defaults.headers.post['Content-Type'] = 'application/json';
-	$http.get("index.php?action=getComics").success(function(data) {
-		$scope.comics = data;
-		console.log(data);
- 	});
-
-}]);*/

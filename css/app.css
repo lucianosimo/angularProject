@@ -12,6 +12,7 @@ ul.navbar li {
 }
 
 .comicWrapper {
+	margin-top: 15px;
 	width: 800px;
 	background-color: #81BEF7;
 }
