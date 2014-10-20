@@ -3,3 +3,9 @@
 <div ng-repeat="friend in friends" ng-controller="FriendsCtrl">
 	<p>{{ friend.name }}</p>
 </div>
+
+<h2>Add new friend</h2>
+
+Name: <input type="text" class="title" ng-model="friend.name"> <br>
+
+<button class='addFriend' ng-click="addFriend()">Add new friend</button>

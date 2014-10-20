@@ -16,4 +16,16 @@ app.factory('Friends', [function() {
 
 .controller('FriendsCtrl', ['$scope','Friends', function($scope, Friends) {
 	$scope.friends = Friends.all();
+
+	$scope.addFriend = function() {
+
+		var newFriend = new function() {
+			this.name = $scope.friend.name;
+		};
+
+		$scope.friends.push(newFriend);
+
+		$scope.friend.name = " ";
+	};
+
 }]);
