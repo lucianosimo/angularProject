@@ -20,6 +20,7 @@ app.factory('Comics', [function() {
 
 .controller('ComicsCtrl', ['$scope', 'Comics', function($scope, Comics) {
 	$scope.comics = Comics.all();
+	var isEditing = false;
 
 	$scope.addComic = function() {
 
@@ -29,10 +30,34 @@ app.factory('Comics', [function() {
 			this.description = $scope.comic.description;
 		};
 
-		console.log(newComic);
-
 		$scope.comics.push(newComic);
+
+		$scope.comic.title = " ";
+		$scope.comic.description = " ";
 	};
+
+	$scope.isEditing = function() {
+
+		return isEditing;
+
+	};
+
+	//We set the editing state to true to display text fields for editing comic
+	$scope.setEditComicState = function() {
+
+		isEditing = true;
+
+	};
+
+	//To edit a comic we pass the item to the function, search for its index, remove the old item and save the new one
+	$scope.saveEditedComic = function(comic) {
+
+		var item = $scope.comics.indexOf(comic);
+		$scope.comics.splice(item, 1, comic);
+		isEditing = false;
+
+	};
+
 
 	//To delete a comic we pass the item to the function and search for its index.
 	$scope.deleteComic = function(comic) {

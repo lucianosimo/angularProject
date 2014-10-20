@@ -3,7 +3,13 @@
 <div class="comicWrapper" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
 	<a href="#/comic/{{ comic.id }}">{{ comic.title }}</a>
 	<p>{{ comic.description }}</p>
+	<button class='editComic' ng-click="setEditComicState()">Edit</button>
 	<button class='deleteComic' ng-click="deleteComic(comic)">Delete</button>
+	<div ng-if="isEditing()">
+		<input type="text" class="title" ng-model="comic.title"> <br>
+		<textarea class="description" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
+		<button class='editedComic' ng-click="saveEditedComic(comic)">Save comic</button>
+	</div>
 </div>
 
 <h2>Add new comic</h2>
