@@ -2,11 +2,11 @@ var app = angular.module('comics', []);
 
 app.factory('Comics', [function() {
 	var comics = [
-		{id: 0, title: 'Superman', description: 'An superhero'},
-		{id: 1, title: 'Batman', description: 'Another superhero'},
-		{id: 2, title: 'The Simpsons', description: 'The best tv show ever'},
-		{id: 3, title: 'Byclope', description: 'An superhero with glasses'},
-		{id: 4, title: 'SpiderMan', description: 'Another another hero'},
+		{id: 0, title: 'Superman', description: 'An superhero', available: 3},
+		{id: 1, title: 'Batman', description: 'Another superhero', available: 3},
+		{id: 2, title: 'The Simpsons', description: 'The best tv show ever', available: 3},
+		{id: 3, title: 'Byclope', description: 'An superhero with glasses', available: 3},
+		{id: 4, title: 'SpiderMan', description: 'Another another hero', available: 3},
 	];
 	return {
 		all: function() {
@@ -18,9 +18,13 @@ app.factory('Comics', [function() {
 	};
 }])
 
-.controller('ComicsCtrl', ['$scope', 'Comics', function($scope, Comics) {
+.controller('ComicsCtrl', ['$scope', 'Comics', 'Friends', function($scope, Comics, Friends) {
+
 	$scope.comics = Comics.all();
+	$scope.friends = Friends.all();
+
 	var isEditing = false;
+	var isLoaning = false;
 
 	$scope.addComic = function() {
 
@@ -28,6 +32,7 @@ app.factory('Comics', [function() {
 			this.id = $scope.comics.length;
 			this.title = $scope.comic.title;
 			this.description = $scope.comic.description;
+			this.available = $scope.comic.available;
 		};
 
 		$scope.comics.push(newComic);
@@ -58,6 +63,29 @@ app.factory('Comics', [function() {
 
 	};
 
+	//If loan button is pressed we want to display loaning options and hide edit and delete comic buttons
+	//We also load all sheldon friends to display them in the dropdown menu
+	$scope.isLoaning = function() {
+
+		return isLoaning;
+
+	};
+
+	$scope.setLoaningState = function() {
+
+		isLoaning = true;
+	};
+
+	$scope.lendComic = function(comic, friendLoan) {
+
+		var indexComic = $scope.comics.indexOf(comic);
+		var indexFriend = $scope.friends.indexOf(friendLoan);
+
+		$scope.comics[indexComic].available--;
+		$scope.friends[indexFriend].comics.push(comic);
+		isLoaning = false;
+
+	};
 
 	//To delete a comic we pass the item to the function and search for its index.
 	$scope.deleteComic = function(comic) {

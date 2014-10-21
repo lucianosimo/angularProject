@@ -2,13 +2,21 @@
 
 <div class="comicWrapper" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
 	<a href="#/comic/{{ comic.id }}">{{ comic.title }}</a>
+	<p>Available: {{ comic.available }}</p>
 	<p>{{ comic.description }}</p>
-	<button class='editComic' ng-click="setEditComicState()">Edit</button>
-	<button class='deleteComic' ng-click="deleteComic(comic)">Delete</button>
+	<div ng-hide="isEditing() || isLoaning()">
+		<button class='editComic' ng-click="setEditComicState()">Edit</button>
+		<button class='deleteComic' ng-click="deleteComic(comic)">Delete</button>
+		<button class='lendComic' ng-click="setLoaningState()" ng-if="comic.available > 0">Lend comic</button>
+	</div>	
 	<div ng-if="isEditing()">
 		<input type="text" class="title" ng-model="comic.title"> <br>
 		<textarea class="description" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
 		<button class='editedComic' ng-click="saveEditedComic(comic)">Save comic</button>
+	</div>
+	<div ng-if="isLoaning()">
+		<select ng-init="friendLoan = friends[0]" ng-model="friendLoan" ng-options="friend.name for friend in friends"></select>
+		<button class='lentComic' ng-click="lendComic(comic, friendLoan)">Lend comic to {{ friendLoan.name }}</button>	
 	</div>
 </div>
 
@@ -16,5 +24,6 @@
 
 Title: <input type="text" class="title" ng-model="comic.title"> <br>
 Description: <textarea class="description" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
+Quantity: <input type="text" class="available" ng-model="comic.available"> <br>
 
 <button class='addComic' ng-click="addComic()">Add new comic</button>
