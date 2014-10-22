@@ -21,11 +21,6 @@ app.config(function($routeProvider) {
 	.when('/friends', {
 		templateUrl: 'friends/friends.tpl.html',
 		controller: 'FriendsCtrl'
-	})
-
-	.when('/loans', {
-		templateUrl: 'loans/loans.tpl.html',
-		controller: 'LoansCtrl'
 	});
 
 	$routeProvider.otherwise({
@@ -34,19 +29,15 @@ app.config(function($routeProvider) {
 
 });
 
-app.controller('MainCtrl', ['$scope', '$location','LoginService', function($scope, $location, LoginService) {
+app.controller('MainCtrl', ['$scope', '$location','Login', function($scope, $location, Login) {
 
 	$scope.logoutUser = function() {
-
-		LoginService.setUserLoggedStatus(false);
+		Login.setUserLoggedStatus(false);
 		$location.path('/');
-
 	};
 
 	$scope.isLoggedIn = function() {
-
-		return LoginService.isUserLoggedIn();
-
+		return Login.isUserLoggedIn();
 	};
 
 }]);
