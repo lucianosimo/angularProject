@@ -25,18 +25,24 @@ app.factory('Friends', [function() {
 		friends.splice(index, 1);
 	};
 
-	var returnComic = function(comic,friend) {
+	var returnComic = function(comic, friend) {
 		var indexFriend = friends.indexOf(friend);
 		var indexFriendComic = friends[indexFriend].comics.indexOf(comic);
 
 		friends[indexFriend].comics.splice(indexFriendComic, 1);
 	};
 
+	var receiveComic = function(comic, friend) {
+		var index = friends.indexOf(friend);
+		friends[index].comics.push(comic);
+	};
+
 	return {
 		getAllFriends: getAllFriends,
 		addFriend: addFriend,
 		deleteFriend: deleteFriend,
-		returnComic: returnComic
+		returnComic: returnComic,
+		receiveComic: receiveComic
 	};
 
 }])

@@ -24,7 +24,7 @@ app.factory('Comics', [function() {
 			description : comic.description,
 			available : comic.available
 		};
-		
+
 		comics.push(newComic);
 	};
 
@@ -32,6 +32,12 @@ app.factory('Comics', [function() {
 		var index = comics.indexOf(comic);
 
 		comics.splice(index, 1);
+	};
+
+	var saveEditedComic = function(comic) {
+		var index = comics.indexOf(comic);
+
+		comics.splice(index, 1, comic);
 	};
 
 	var lendComic = function(comic) {
@@ -52,11 +58,12 @@ app.factory('Comics', [function() {
 		addComic: addComic,
 		deleteComic: deleteComic,
 		lendComic: lendComic,
-		receiveComic: receiveComic
+		receiveComic: receiveComic,
+		saveEditedComic: saveEditedComic
 	};
 }])
 
-.controller('ComicsCtrl', ['$scope', 'Comics', 'Friends', function($scope, Comics, Friends) {
+.controller('ComicsCtrl', ['$scope', 'Comics', 'Friends', 'Loans', function($scope, Comics, Friends, Loans) {
 
 	$scope.comics = Comics.getAllComics();
 	$scope.friends = Friends.getAllFriends();
@@ -65,10 +72,9 @@ app.factory('Comics', [function() {
 	var isLoaning = false;
 
 	$scope.lendComic = function(comic, friendLoan) {
-		var indexFriend = $scope.friends.indexOf(friendLoan);
-		$scope.friends[indexFriend].comics.push(comic);
-
 		Comics.lendComic(comic);
+		Friends.receiveComic(comic, friendLoan);
+		Loans.saveLoan(comic, friendLoan);
 
 		isLoaning = false;
 	};
@@ -84,6 +90,12 @@ app.factory('Comics', [function() {
 		Comics.addComic(comic);
 	};
 
+	//To edit a comic we pass the item to the function, search for its index, remove the old item and save the new one
+	$scope.saveEditedComic = function(comic) {
+		Comics.saveEditedComic(comic);
+		isEditing = false;
+	};
+
 	$scope.isEditing = function() {
 		return isEditing;
 	};
@@ -91,14 +103,6 @@ app.factory('Comics', [function() {
 	//We set the editing state to true to display text fields for editing comic
 	$scope.setEditComicState = function() {
 		isEditing = true;
-	};
-
-	//To edit a comic we pass the item to the function, search for its index, remove the old item and save the new one
-	$scope.saveEditedComic = function(comic) {
-		var item = $scope.comics.indexOf(comic);
-
-		$scope.comics.splice(item, 1, comic);
-		isEditing = false;
 	};
 
 	//If loan button is pressed we want to display loaning options and hide edit and delete comic buttons
