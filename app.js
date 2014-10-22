@@ -1,4 +1,4 @@
-var app = angular.module('app',['ngRoute','login', 'comics', 'comic', 'friends']);
+var app = angular.module('app',['ngRoute','login', 'comics', 'comic', 'friends', 'loans']);
 
 //Routing
 app.config(function($routeProvider) {
@@ -21,6 +21,11 @@ app.config(function($routeProvider) {
 	.when('/friends', {
 		templateUrl: 'friends/friends.tpl.html',
 		controller: 'FriendsCtrl'
+	})
+
+	.when('/loans', {
+		templateUrl: 'loans/loans.tpl.html',
+		controller: 'LoansCtrl'
 	});
 
 	$routeProvider.otherwise({
