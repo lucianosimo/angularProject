@@ -36,6 +36,10 @@ app.config(function($routeProvider) {
 
 .run(['$rootScope', '$location', 'Login', function ($rootScope, $location, Login) {
     $rootScope.$on('$routeChangeStart', function (event) {
+    	if (!Login.isAdminUser() && ($location.url() == '/friends' || $location.url() == '/loans')) {
+            alert('Access forbidden');
+            $location.path('/comics');
+    	};
 
         if (!Login.isUserLoggedIn()) {
             event.preventDefault();
@@ -53,6 +57,10 @@ app.config(function($routeProvider) {
 
 	$scope.isLoggedIn = function() {
 		return Login.isUserLoggedIn();
+	};
+
+	$scope.isAdmin = function() {
+		return Login.isAdminUser();
 	};
 
 }]);

@@ -4,7 +4,7 @@
 	<a href="#/comic/{{ comic.id }}">{{ comic.title }}</a>
 	<p>Available: {{ comic.available }}</p>
 	<p>{{ comic.description }}</p>
-	<div ng-hide="isEditing() || isLoaning()">
+	<div ng-hide="!isAdmin() || isEditing() || isLoaning()">
 		<button class='editComic' ng-click="setEditComicState()">Edit</button>
 		<button class='deleteComic' ng-click="deleteComic(comic)">Delete</button>
 		<button class='lendComic' ng-click="setLoaningState()" ng-if="comic.available > 0">Lend comic</button>
@@ -19,11 +19,12 @@
 		<button class='lentComic' ng-click="lendComic(comic, friendLoan)">Lend comic to {{ friendLoan.name }}</button>	
 	</div>
 </div>
+<div ng-show="isAdmin()">
+	<h2>Add new comic</h2>
 
-<h2>Add new comic</h2>
+	Title: <input type="text" class="title" ng-model="comic.title"> <br>
+	Description: <textarea class="description" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
+	Quantity: <input type="text" class="available" ng-model="comic.available"> <br>
 
-Title: <input type="text" class="title" ng-model="comic.title"> <br>
-Description: <textarea class="description" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
-Quantity: <input type="text" class="available" ng-model="comic.available"> <br>
-
-<button class='addComic' ng-click="addComic()">Add new comic</button>
+	<button class='addComic' ng-click="addComic()">Add new comic</button>
+</div>
