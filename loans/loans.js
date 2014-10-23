@@ -10,7 +10,8 @@ app.factory('Loans', [function() {
 	var saveLoan = function(comic, friend) {
 		var newLoan = {
 			comicTitle: comic.title,
-			friendName: friend.name
+			friendName: friend.name,
+			date: new Date()
 		};
 		loans.push(newLoan);
 	};

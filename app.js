@@ -32,12 +32,22 @@ app.config(function($routeProvider) {
 		redirectTo: '/'
 	});
 
-});
+})
 
-app.controller('MainCtrl', ['$scope', '$location','Login', function($scope, $location, Login) {
+.run(['$rootScope', '$location', 'Login', function ($rootScope, $location, Login) {
+    $rootScope.$on('$routeChangeStart', function (event) {
+
+        if (!Login.isUserLoggedIn()) {
+            event.preventDefault();
+            alert('Please login');
+            $location.path('/');
+        }
+    });
+}])
+
+.controller('MainCtrl', ['$scope', '$location','Login', function($scope, $location, Login) {
 
 	$scope.logoutUser = function() {
-		Login.setUserLoggedStatus(false);
 		$location.path('/');
 	};
 

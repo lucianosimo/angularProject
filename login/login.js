@@ -6,6 +6,7 @@ app.factory('Login', [function() {
 
     var setUserLoggedStatus = function(value) {
 		isUserLoggedIn = value;
+		console.log(isUserLoggedIn);
 	};
 
 	var isUserLoggedIn = function() {
@@ -19,6 +20,8 @@ app.factory('Login', [function() {
 }]) 
 
 .controller('LoginCtrl', ['$scope', '$location', 'Login', function($scope, $location, Login) {
+
+	Login.setUserLoggedStatus(false);
 
 	$scope.login = function() {
 		var user = $scope.user;
