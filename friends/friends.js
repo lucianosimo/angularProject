@@ -59,9 +59,10 @@ app.factory('Friends', [function() {
 	};
 
 	$scope.deleteFriend = function(friend) {
-		//var friend = $scope.friend;
-
-		Friends.deleteFriend(friend);
+		var response = confirm("Delete " + friend.name);
+		if (response == true) {
+			Friends.deleteFriend(friend);
+		}
 	};
 
 	$scope.returnComic = function(comic, friend) {

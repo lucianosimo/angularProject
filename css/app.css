@@ -2,25 +2,28 @@
 	margin-top: 4px;
 }
 
-.comicListWrapper {
+.comicListWrapper, .friendsWrapper {
 	background-color: #d9edf7;
 	margin-bottom: 15px;
 }
 
-.newComicWrapper {
-	background-color: #dff0d8;
-}
-
-.friendsWrapper {
-	background-color: #d9edf7;
-	margin-bottom: 15px;
-}
-
-.newFriendWrapper {
+.newComicWrapper, .newFriendWrapper{
 	background-color: #dff0d8;
 }
 
 .loansWrapper {
 	background-color: #d9edf7;
 	margin-bottom: 10px;
+}
+
+input.ng-invalid, textarea.ng-invalid {
+  border: 1px solid red;
+}
+
+input.ng-valid, textarea.ng-valid {
+  border: 1px solid green;
+}
+
+input.ng-pristine, textarea.ng-pristine {
+  border: 1px solid rgb(204, 204, 204);
 }

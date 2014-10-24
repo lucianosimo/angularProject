@@ -24,15 +24,22 @@
 		<button class="btn btn-danger" ng-click="cancelLendComic()">Cancel</button>
 	</div>
 </div>
-<div class="newComicWrapper" ng-show="isAdmin()">
+<div class="newComicWrapper" ng-show="isAdmin()" ng-submit="addComic()">
 	<h3>Add new comic</h3>
-
-	<label>Title: </label>
-	<input type="text" class="form-control" placeholder="Enter title" ng-model="comic.title"> <br>
-	<label>Description: </label>
-	<textarea class="form-control" placeholder="Describe here" rows="10" cols="30" ng-model="comic.description"></textarea><br>
-	<label>Quantity: </label>
-	<input type="text" class="form-control" placeholder="How many copies" ng-model="comic.available"> <br>
-
-	<button class="btn btn-default" ng-click="addComic()">Add new comic</button>
+	<form novalidate>
+		<div class="form-group">
+			<label>Title: </label>
+			<input type="text" class="form-control" placeholder="Enter title" ng-model="comic.title" required> <br>
+		</div>
+		<div class="form-group">
+			<label>Description: </label>
+			<textarea class="form-control" placeholder="Describe here" rows="10" cols="30" ng-model="comic.description" required>
+			</textarea><br>
+		</div>
+		<div class="form-group">
+			<label>Quantity: </label>
+			<input type="number" class="form-control" placeholder="How many copies" ng-model="comic.available" required> <br>
+		</div>
+		<input type="submit" class="btn btn-default" value="Add new comic"/>
+	</form>
 </div>

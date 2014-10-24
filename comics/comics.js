@@ -85,11 +85,15 @@ app.factory('Comics', [function() {
 
 	//To delete a comic we pass the item to the function and search for its index.
 	$scope.deleteComic = function(comic) {
-		Comics.deleteComic(comic);
+		var response = confirm("Delete " + comic.title);
+		if (response == true) {
+			Comics.deleteComic(comic);
+		}		
 	};
 
 	$scope.addComic = function() {
 		var comic = $scope.comic;
+		$scope.comic = null;
 
 		Comics.addComic(comic);
 	};
