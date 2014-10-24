@@ -1,24 +1,26 @@
-ul.navbar{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	background-color: #CAEBFF;
-	width: 600px;
+.logoutButton {
+	margin-top: 4px;
 }
 
-ul.navbar li {
-	display: inline;
-	padding-right: 75px;
+.comicListWrapper {
+	background-color: #d9edf7;
+	margin-bottom: 15px;
 }
 
-.comicWrapper {
-	margin-top: 15px;
-	width: 600px;
-	background-color: #81BEF7;
+.newComicWrapper {
+	background-color: #dff0d8;
 }
 
 .friendsWrapper {
-	margin-top: 10px;
-	width: 600px;
-	background-color: #81BEF7;
+	background-color: #d9edf7;
+	margin-bottom: 15px;
+}
+
+.newFriendWrapper {
+	background-color: #dff0d8;
+}
+
+.loansWrapper {
+	background-color: #d9edf7;
+	margin-bottom: 10px;
 }

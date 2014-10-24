@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<title>Sheldon's comics collection</title>
 </head>
 <body>
-	<div ng-app="app" ng-controller="MainCtrl">
+	<div class="container" ng-app="app" ng-controller="MainCtrl">
 		<div ng-if="isLoggedIn()">
-			<ul class="navbar" ng-if="isAdmin()">
+			<ul class="nav nav-tabs" ng-if="isAdmin()">
 				<li><a href="#/comics">Comics</a></li>
 				<li><a href="#/friends">People</a></li>
-				<li><a href="#/loans">Loans</a></li>
+				<li><a href="#/loans">Loans history</a></li>
+				<li class="navbar-right"><button class="btn btn-default logoutButton" ng-click="logoutUser()">Logout</button></li>
 			</ul>
-			<button class='logoutButton' ng-click="logoutUser()">Logout</button>
 		</div>
 		<ng-view></ng-view>
 	</div>
@@ -24,5 +25,6 @@
 	<script type="text/javascript" src="comics/comic/comic.js"></script>
 	<script type="text/javascript" src="friends/friends.js"></script>
 	<script type="text/javascript" src="loans/loans.js"></script>
+	<script type="text/javascript" src="ui-bootstrap-tpls-0.9.0.min.js"></script>
 </body>
 </html>

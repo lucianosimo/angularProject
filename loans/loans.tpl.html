@@ -1,6 +1,6 @@
 <h1>Loans page</h1>
 
-<h2>Loan history:</h2>
-<div ng-repeat="loan in loans">
+<h3>Loan history:</h3>
+<div class="loansWrapper" ng-repeat="loan in loans">
 	{{loan.comicTitle}} lent to {{loan.friendName}} on {{loan.date | date:'yyyy-MM-dd'}}
 </div>

@@ -1,30 +1,38 @@
 <h1>Comics page</h1>
 
-<div class="comicWrapper" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
-	<a href="#/comic/{{ comic.id }}">{{ comic.title }}</a>
+<h3>List of comics</h3>
+
+<div class="comicListWrapper" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
+	<h3><a href="#/comic/{{ comic.id }}">{{ comic.title }}</a></h3>
 	<p>Available: {{ comic.available }}</p>
+	<label>Comic description:</label>
 	<p>{{ comic.description }}</p>
 	<div ng-hide="!isAdmin() || isEditing() || isLoaning()">
-		<button class='editComic' ng-click="setEditComicState()">Edit</button>
-		<button class='deleteComic' ng-click="deleteComic(comic)">Delete</button>
-		<button class='lendComic' ng-click="setLoaningState()" ng-if="comic.available > 0">Lend comic</button>
+		<button class="btn btn-primary" ng-click="setLoaningState()" ng-if="comic.available > 0">Lend comic</button>
+		<button class="btn btn-default" ng-click="setEditComicState()">Edit</button>
+		<button class="btn btn-danger" ng-click="deleteComic(comic)">Delete</button>
 	</div>	
 	<div ng-if="isEditing()">
-		<input type="text" class="title" ng-model="comic.title"> <br>
-		<textarea class="description" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
-		<button class='editedComic' ng-click="saveEditedComic(comic)">Save comic</button>
+		<input type="text" class="form-control" ng-model="comic.title"> <br>
+		<textarea class="form-control" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
+		<button class="btn btn-success" ng-click="saveEditedComic(comic)">Save comic</button>
+		<button class="btn btn-danger" ng-click="cancelEditedComic(comic)">Cancel</button>
 	</div>
 	<div ng-if="isLoaning()">
-		<select ng-init="friendLoan = friends[0]" ng-model="friendLoan" ng-options="friend.name for friend in friends"></select>
-		<button class='lentComic' ng-click="lendComic(comic, friendLoan)">Lend comic to {{ friendLoan.name }}</button>	
+		<select class="form-control" ng-init="friendLoan = friends[0]" ng-model="friendLoan" ng-options="friend.name for friend in friends"></select><br>
+		<button class="btn btn-success" ng-click="lendComic(comic, friendLoan)">Lend comic to {{ friendLoan.name }}</button>
+		<button class="btn btn-danger" ng-click="cancelLendComic()">Cancel</button>
 	</div>
 </div>
-<div ng-show="isAdmin()">
-	<h2>Add new comic</h2>
+<div class="newComicWrapper" ng-show="isAdmin()">
+	<h3>Add new comic</h3>
 
-	Title: <input type="text" class="title" ng-model="comic.title"> <br>
-	Description: <textarea class="description" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
-	Quantity: <input type="text" class="available" ng-model="comic.available"> <br>
+	<label>Title: </label>
+	<input type="text" class="form-control" placeholder="Enter title" ng-model="comic.title"> <br>
+	<label>Description: </label>
+	<textarea class="form-control" placeholder="Describe here" rows="10" cols="30" ng-model="comic.description"></textarea><br>
+	<label>Quantity: </label>
+	<input type="text" class="form-control" placeholder="How many copies" ng-model="comic.available"> <br>
 
-	<button class='addComic' ng-click="addComic()">Add new comic</button>
+	<button class="btn btn-default" ng-click="addComic()">Add new comic</button>
 </div>

@@ -1,4 +1,4 @@
-var app = angular.module('app',['ngRoute','login', 'comics', 'comic', 'friends', 'loans']);
+var app = angular.module('app',['ngRoute', 'ui.bootstrap','login', 'comics', 'comic', 'friends', 'loans']);
 
 //Routing
 app.config(function($routeProvider) {
@@ -39,7 +39,7 @@ app.config(function($routeProvider) {
     	if (!Login.isAdminUser() && ($location.url() == '/friends' || $location.url() == '/loans')) {
             alert('Access forbidden');
             $location.path('/comics');
-    	};
+    	}
 
         if (!Login.isUserLoggedIn()) {
             event.preventDefault();

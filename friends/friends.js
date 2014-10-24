@@ -59,7 +59,7 @@ app.factory('Friends', [function() {
 	};
 
 	$scope.deleteFriend = function(friend) {
-		var friend = $scope.friend;
+		//var friend = $scope.friend;
 
 		Friends.deleteFriend(friend);
 	};

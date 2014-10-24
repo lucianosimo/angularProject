@@ -79,6 +79,10 @@ app.factory('Comics', [function() {
 		isLoaning = false;
 	};
 
+	$scope.cancelLendComic = function() {
+		isLoaning = false;
+	};
+
 	//To delete a comic we pass the item to the function and search for its index.
 	$scope.deleteComic = function(comic) {
 		Comics.deleteComic(comic);
@@ -93,6 +97,10 @@ app.factory('Comics', [function() {
 	//To edit a comic we pass the item to the function, search for its index, remove the old item and save the new one
 	$scope.saveEditedComic = function(comic) {
 		Comics.saveEditedComic(comic);
+		isEditing = false;
+	};
+
+	$scope.cancelEditedComic = function() {
 		isEditing = false;
 	};
 
