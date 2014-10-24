@@ -27,7 +27,7 @@ app.factory('Login', [function() {
 	}
 
 	var isAdminUser = function() {
-		return true;
+		return isAdmin;
 	};
 
 	return {
