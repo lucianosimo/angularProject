@@ -31,19 +31,22 @@
 	<form name="newComicForm" ng-submit="newComicForm.$valid && addComic()" novalidate>
 		<div class="form-group">
 			<label>Title: </label>
-			<input name="titleInput"type="text" class="form-control" placeholder="Enter title" ng-model="comic.title" required> 
+			<input name="titleInput" type="text" class="form-control" placeholder="Enter title" ng-model="comic.title" required> 
 			<br>
+			<strong><label class="errorMessage" ng-hide="newComicForm.titleInput.$pristine || newComicForm.titleInput.$valid">The title is not valid</label></strong>
 		</div>
 		<div class="form-group">
 			<label>Description: </label>
-			<textarea class="form-control" placeholder="Describe here" rows="10" cols="30" ng-model="comic.description" required>
+			<textarea name="descriptionInput" class="form-control" placeholder="Describe here" rows="10" cols="30" ng-model="comic.description" required>
 			</textarea><br>
+			<strong><label class="errorMessage" ng-hide="newComicForm.descriptionInput.$pristine || newComicForm.descriptionInput.$valid">The description is not valid</label></strong>
 		</div>
 		<div class="form-group">
 			<label>Quantity: </label>
-			<input type="number" class="form-control" placeholder="How many copies" ng-model="comic.available" required> <br>
+			<input name="quantityInput" type="number" class="form-control" placeholder="How many copies" ng-model="comic.available" required> <br>
+			<strong><label class="errorMessage" ng-hide="newComicForm.quantityInput.$pristine || newComicForm.quantityInput.$valid">The number of available comics is not valid</label></strong>
 		</div>
-		<input ng-disabled="newComicForm.$invalid" type="submit" class="btn btn-default" value="Add new comic"/>
+		<input ng-disabled="newComicForm.$invalid" type="submit" class="btn btn-success" value="Add new comic"/>
 		<button type="submit" class="btn btn-danger" ng-click="resetForm()">Reset</button>
 	</form>
 </div>

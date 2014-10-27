@@ -106,7 +106,7 @@ app.factory('Comics', [function() {
 	};
 
 	$scope.cancelEditedComic = function() {
-		$scope.comic = angular.copy(oldComic);
+		$scope.comic[oldComic.id] = angular.copy(oldComic);
 		isEditing = false;
 	};
 
