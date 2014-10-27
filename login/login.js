@@ -28,6 +28,7 @@ app.factory('Login', [function() {
 
 	var isAdminUser = function() {
 		return isAdmin;
+		//return true;
 	};
 
 	return {

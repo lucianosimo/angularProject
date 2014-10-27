@@ -34,7 +34,7 @@ app.factory('Comics', [function() {
 		comics.splice(index, 1);
 	};
 
-	var saveEditedComic = function(comic) {
+	var updateComic = function(comic) {
 		var index = comics.indexOf(comic);
 
 		comics.splice(index, 1, comic);
@@ -59,7 +59,7 @@ app.factory('Comics', [function() {
 		deleteComic: deleteComic,
 		lendComic: lendComic,
 		receiveComic: receiveComic,
-		saveEditedComic: saveEditedComic
+		updateComic: updateComic
 	};
 }])
 
@@ -67,6 +67,7 @@ app.factory('Comics', [function() {
 
 	$scope.comics = Comics.getAllComics();
 	$scope.friends = Friends.getAllFriends();
+	var oldComic = null;
 
 	var isEditing = false;
 	var isLoaning = false;
@@ -93,18 +94,19 @@ app.factory('Comics', [function() {
 
 	$scope.addComic = function() {
 		var comic = $scope.comic;
-		$scope.comic = null;
-
 		Comics.addComic(comic);
+		$scope.comic = null;
+		$scope.newComicForm.$setPristine();
 	};
 
 	//To edit a comic we pass the item to the function, search for its index, remove the old item and save the new one
-	$scope.saveEditedComic = function(comic) {
-		Comics.saveEditedComic(comic);
+	$scope.updateComic = function(comic) {
+		Comics.updateComic(comic);
 		isEditing = false;
 	};
 
 	$scope.cancelEditedComic = function() {
+		$scope.comic = angular.copy(oldComic);
 		isEditing = false;
 	};
 
@@ -113,8 +115,18 @@ app.factory('Comics', [function() {
 	};
 
 	//We set the editing state to true to display text fields for editing comic
-	$scope.setEditComicState = function() {
+	$scope.setEditComicState = function(comic) {
+		oldComic = angular.copy(comic);
 		isEditing = true;
+	};
+
+	$scope.resetForm = function() {
+		$scope.comic = null;
+		$scope.newComicForm.$setPristine();
+	};
+
+	$scope.isUnchanged = function(comic) {
+		return angular.equals(comic, oldComic);
 	};
 
 	//If loan button is pressed we want to display loaning options and hide edit and delete comic buttons

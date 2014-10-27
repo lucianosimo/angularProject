@@ -9,10 +9,14 @@
 	</div><br>
 	<button class="btn btn-danger" ng-click="deleteFriend(friend)">Delete {{ friend.name }}</button>
 </div>
-
 <div class="newFriendWrapper">
 	<h3>Add new friend</h3>
-	<label>Name:</label>
-	<input type="text" class="form-control" placeholder="Enter Name" ng-model="friend.name"> <br>
-	<button class="btn btn-default" ng-click="addFriend()">Add new friend</button>
+	<form name="newFriendForm" ng-submit="newFriendForm.$valid && addFriend()" novalidate>
+		<label>Name:</label>
+		<input type="text" class="form-control" placeholder="Enter Name" ng-model="friend.name" required><br>
+		<strong>
+			<p class="errorMessage" ng-hide="newFriendForm.$pristine || newFriendForm.$valid">Check the wrong values</p>
+		</strong>
+		<input type="submit" class="btn btn-default" value="Add new friend"/>
+	</form>
 </div>

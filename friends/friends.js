@@ -13,7 +13,8 @@ app.factory('Friends', [function() {
 
 	var addFriend = function(friend) {
 		var newFriend = {
-			name: friend.name
+			name: friend.name,
+			comics: []
 		};
 
 		friends.push(newFriend);
@@ -54,7 +55,8 @@ app.factory('Friends', [function() {
 
 	$scope.addFriend = function() {
 		var friend = $scope.friend;
-
+		$scope.friend = null;
+		$scope.newFriendForm.$setPristine();
 		Friends.addFriend(friend);
 	};
 

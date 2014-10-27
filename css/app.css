@@ -16,14 +16,18 @@
 	margin-bottom: 10px;
 }
 
-input.ng-invalid, textarea.ng-invalid {
+input.ng-invalid.ng-dirty, textarea.ng-invalid.ng-dirty {
   border: 1px solid red;
 }
 
-input.ng-valid, textarea.ng-valid {
+input.ng-valid.ng-dirty, textarea.ng-valid.ng-dirty {
   border: 1px solid green;
 }
 
 input.ng-pristine, textarea.ng-pristine {
   border: 1px solid rgb(204, 204, 204);
+}
+
+.errorMessage {
+	color: red;
 }
