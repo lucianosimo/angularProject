@@ -2,11 +2,11 @@ var app = angular.module('comics', []);
 
 app.factory('Comics', [function() {
 	var comics = [
-		{id: 0, title: 'Superman', description: 'An superhero', available: 3},
-		{id: 1, title: 'Batman', description: 'Another superhero', available: 3},
-		{id: 2, title: 'The Simpsons', description: 'The best tv show ever', available: 3},
-		{id: 3, title: 'Byclope', description: 'An superhero with glasses', available: 3},
-		{id: 4, title: 'SpiderMan', description: 'Another another hero', available: 3},
+		{id: 0, title: 'Superman', description: 'A superhero', available: 3, imageName: 'superman.jpg'},
+		{id: 1, title: 'Batman', description: 'Another superhero', available: 3, imageName: 'batman.png'},
+		{id: 2, title: 'The Simpsons', description: 'The best tv show ever', available: 3, imageName: 'simpsons.jpg'},
+		{id: 3, title: 'Biclops', description: 'A superhero with glasses', available: 3, imageName: 'biclops.png'},
+		{id: 4, title: 'SpiderMan', description: 'Another another hero', available: 3, imageName: 'spiderman.jpg'},
 	];
 
 	var getComic = function(id) {
@@ -22,7 +22,8 @@ app.factory('Comics', [function() {
 			id : comics.length,
 			title : comic.title,
 			description : comic.description,
-			available : comic.available
+			available : comic.available,
+			imageName: 'placeholder.jpg'
 		};
 
 		comics.push(newComic);
@@ -106,7 +107,7 @@ app.factory('Comics', [function() {
 	};
 
 	$scope.cancelEditedComic = function() {
-		$scope.comic[oldComic.id] = angular.copy(oldComic);
+		$scope.comics[oldComic.id] = angular.copy(oldComic);
 		isEditing = false;
 	};
 

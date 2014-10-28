@@ -3,17 +3,29 @@
 }
 
 .comicListWrapper, .friendsWrapper {
-	background-color: #d9edf7;
-	margin-bottom: 15px;
+	background-color: #E6E2AF;
+	text-align: center;
+	display: inline-block;
+	border: 1px solid #A7A37E;
+	margin: 5px;
+	width: 325px;
+	vertical-align: top;
 }
 
 .newComicWrapper, .newFriendWrapper{
-	background-color: #dff0d8;
+	background-color: #E6E2AF;
+	border: 1px solid #A7A37E;
+	margin: 20px 20px 5px 5px;
+	padding: 10px;
 }
 
 .loansWrapper {
 	background-color: #d9edf7;
 	margin-bottom: 10px;
+}
+
+.comicButtonWrapper{
+	margin: 5px;
 }
 
 input.ng-invalid.ng-dirty, textarea.ng-invalid.ng-dirty {
@@ -30,4 +42,31 @@ input.ng-pristine, textarea.ng-pristine {
 
 .errorMessage {
 	color: red;
+}
+
+.navbar-brand {
+	padding-top: 5px;
+	padding-left: 20px;
+}
+
+.jumbotron {
+	background-color: #EFECCA;
+}
+
+.image{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.thumbnail{
+	background-color: #E6E2AF;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 150px;
+	height: 200px;
+}
+
+.comicInfo{
+	padding: 5px;
 }

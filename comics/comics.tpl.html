@@ -1,13 +1,19 @@
-<h1>Comics page</h1>
+<h2>Comics page</h2>
 
 <h3>List of comics</h3>
 
 <div class="comicListWrapper" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
 	<h3><a href="#/comic/{{ comic.id }}">{{ comic.title }}</a></h3>
-	<p>Available: {{ comic.available }}</p>
-	<label>Comic description:</label>
-	<p>{{ comic.description }}</p>
-	<div ng-hide="!isAdmin() || isEditing() || isLoaning()">
+	<div class="thumbnail">
+    	<a href="#/comic/{{ comic.id }}">
+        	<img class="image" src="images/{{ comic.imageName }}">
+      	</a>
+    </div>
+    <div class="comicInfo">
+    	<p>Available: {{ comic.available }}</p>
+		<p>{{ comic.description }}</p>
+    </div>
+	<div class="comicButtonWrapper" ng-hide="!isAdmin() || isEditing() || isLoaning()">
 		<button class="btn btn-primary" ng-click="setLoaningState()" ng-if="comic.available > 0">Lend comic</button>
 		<button class="btn btn-default" ng-click="setEditComicState(comic)">Edit</button>
 		<button class="btn btn-danger" ng-click="deleteComic(comic)">Delete</button>
