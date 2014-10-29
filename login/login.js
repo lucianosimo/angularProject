@@ -20,6 +20,7 @@ app.factory('Login', [function() {
 
 	var isUserLoggedIn = function() {
 		return isUserLoggedIn;
+		//return true;
 	};
 
 	var setAdminUser = function(value) {

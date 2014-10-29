@@ -18,7 +18,7 @@
 		<button class="btn btn-default" ng-click="setEditComicState(comic)">Edit</button>
 		<button class="btn btn-danger" ng-click="deleteComic(comic)">Delete</button>
 	</div>	
-	<div ng-if="isEditing()">
+	<div ng-show="isEditing()">
 		<form name="updateComicForm" novalidate>
 			<input type="text" class="form-control" ng-model="comic.title"> <br>
 			<textarea class="form-control" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
@@ -26,7 +26,7 @@
 			<button class="btn btn-danger" ng-click="cancelEditedComic()">Cancel</button>
 		</form>
 	</div>
-	<div ng-if="isLoaning()">
+	<div ng-show="isLoaning()">
 		<select class="form-control" ng-init="friendLoan = friends[0]" ng-model="friendLoan" ng-options="friend.name for friend in friends"></select><br>
 		<button class="btn btn-success" ng-click="lendComic(comic, friendLoan)">Lend comic to {{ friendLoan.name }}</button>
 		<button class="btn btn-danger" ng-click="cancelLendComic()">Cancel</button>

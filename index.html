@@ -6,8 +6,8 @@
 	<title>Sheldon's comics collection</title>
 </head>
 <body>
-	<div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="MainCtrl">
-		<div class="container" ng-if="isLoggedIn()">
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="MainCtrl" ng-show="isLoggedIn()">
+		<div class="container">
 			<div class="navbar-header">
     		  	<a class="navbar-brand" href="#/comics">
         			<img alt="Brand" src="images/brand.jpg">
@@ -15,7 +15,7 @@
     		</div>
 			<ul class="nav navbar-nav" ng-if="isAdmin()">
 				<li><a href="#/comics">Comics</a></li>
-				<li><a href="#/friends">People</a></li>
+				<li><a href="#/friends">Friends</a></li>
 				<li><a href="#/loans">Loans history</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
