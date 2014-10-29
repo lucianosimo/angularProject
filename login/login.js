@@ -9,6 +9,16 @@ app.factory('Login', [function() {
 	];
 	var isUserLoggedIn = false;
 	var isAdmin = false;
+	var loggedUser = '';
+
+	var addUser = function(user) {
+		var newUser = {
+			username: angular.lowercase(user.name),
+			password: user.password
+		};
+
+		users.push(newUser);
+	};
 
 	var getAllUsers = function() {
 		return users;
@@ -32,16 +42,27 @@ app.factory('Login', [function() {
 		//return true;
 	};
 
+	var setLoggedUser = function(user) {
+		loggedUser = user;
+	};
+
+	var getLoggedUser = function() {
+		return loggedUser;
+	};
+
 	return {
 		getAllUsers: getAllUsers,
 		setUserStatus: setUserStatus,
 		isUserLoggedIn: isUserLoggedIn,
 		setAdminUser: setAdminUser,
-		isAdminUser: isAdminUser
+		isAdminUser: isAdminUser,
+		setLoggedUser: setLoggedUser,
+		getLoggedUser: getLoggedUser,
+		addUser: addUser
 	};
 }]) 
 
-.controller('LoginCtrl', ['$scope', '$location', 'Login', function($scope, $location, Login) {
+.controller('LoginCtrl', ['$window', '$scope', '$location', 'Login', function($window, $scope, $location, Login) {
 
 	Login.setUserStatus(false);
 	Login.setAdminUser(false);
@@ -61,6 +82,7 @@ app.factory('Login', [function() {
 				} else {
 					Login.setAdminUser(false);
 				};
+				Login.setLoggedUser(username);
 				break;
 			};
 		};
@@ -69,7 +91,7 @@ app.factory('Login', [function() {
 			Login.setUserStatus(true);
 			$location.path('/comics');
 		} else {
-			alert('Wrong credentials');
+			$window.alert('Wrong credentials');
 		}
 
 	};

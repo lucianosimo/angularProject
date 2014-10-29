@@ -13,10 +13,9 @@
 	<h3>Add new friend</h3>
 	<form name="newFriendForm" ng-submit="newFriendForm.$valid && addFriend()" novalidate>
 		<label>Name:</label>
-		<input type="text" class="form-control" placeholder="Enter Name" ng-model="friend.name" required><br>
-		<strong>
-			<p class="errorMessage" ng-hide="newFriendForm.$pristine || newFriendForm.$valid">Check the wrong fields</p>
-		</strong>
+		<input type="text" class="form-control" placeholder="Enter name" ng-model="friend.name" required><br>
+		<label>Password:</label>
+		<input type="text" class="form-control" placeholder="Enter password" ng-model="friend.password" required><br>
 		<input type="submit" class="btn btn-default" value="Add new friend"/>
 	</form>
 </div>

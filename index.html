@@ -19,6 +19,7 @@
 				<li><a href="#/loans">Loans history</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<li class="userTag">Hi {{ getUsername() | uppercase }}</li>
 				<li><button class="btn btn-default logoutButton pull-right" ng-click="logoutUser()">Logout</button></li>
 			</ul>
 		</div>	

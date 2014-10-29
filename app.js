@@ -51,6 +51,10 @@ app.config(function($routeProvider) {
 
 .controller('MainCtrl', ['$scope', '$location','Login', function($scope, $location, Login) {
 
+	$scope.getUsername = function() {
+		return Login.getLoggedUser();
+	}
+
 	$scope.logoutUser = function() {
 		$location.path('/');
 	};

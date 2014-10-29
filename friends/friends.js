@@ -1,6 +1,6 @@
 var app = angular.module('friends', []);
 
-app.factory('Friends', [function() {
+app.factory('Friends', ['Login', function(Login) {
 	var friends  = [
 		{name: 'Luciano', comics: []},
 		{name: 'Nicolas', comics: []},
@@ -18,6 +18,7 @@ app.factory('Friends', [function() {
 		};
 
 		friends.push(newFriend);
+		Login.addUser(friend);
 	};
 
 	var deleteFriend = function(friend) {

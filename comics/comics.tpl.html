@@ -1,7 +1,5 @@
 <h2>Comics page</h2>
-
 <h3>List of comics</h3>
-
 <div class="comicListWrapper" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
 	<h3><a href="#/comic/{{ comic.id }}">{{ comic.title }}</a></h3>
 	<div class="thumbnail">
@@ -49,7 +47,7 @@
 		</div>
 		<div class="form-group">
 			<label>Quantity: </label>
-			<input name="quantityInput" type="number" class="form-control" placeholder="How many copies" ng-model="comic.available" required> <br>
+			<input name="quantityInput" type="number" class="form-control quantityInput" placeholder="How many copies" ng-model="comic.available" required> <br>
 			<strong><label class="errorMessage" ng-hide="newComicForm.quantityInput.$pristine || newComicForm.quantityInput.$valid">The number of available comics is not valid</label></strong>
 		</div>
 		<input ng-disabled="newComicForm.$invalid" type="submit" class="btn btn-success" value="Add new comic"/>
