@@ -49,7 +49,20 @@ app.config(function($routeProvider) {
     });
 }])
 
-.controller('MainCtrl', ['$scope', '$location','Login', function($scope, $location, Login) {
+.controller('MainCtrl', ['$scope', '$location', 'Login', 'Comics', 'Friends', 
+	function($scope, $location, Login, Comics, Friends) {
+
+	var getUsers = function() {
+		$scope.users = Login.getAllUsers();
+	};
+
+	var getComics = function() {
+		$scope.comics = Comics.getAllComics();
+	};
+
+	var getFriends = function() {
+		$scope.friends = Friends.getAllFriends();
+	};
 
 	$scope.getUsername = function() {
 		return Login.getLoggedUser();
@@ -66,5 +79,22 @@ app.config(function($routeProvider) {
 	$scope.isAdmin = function() {
 		return Login.isAdminUser();
 	};
+
+	//Initialization
+	$scope.users = Login.getAllUsers();
+	$scope.friends = Friends.getAllFriends();	
+	$scope.comics = Comics.getAllComics();
+
+	if ($scope.users.length == 0) {
+		Login.retrieveUsers(getUsers);
+	};
+
+	if ($scope.friends.length == 0) {
+		Friends.retrieveFriends(getFriends);
+	};
+
+	if ($scope.comics.length == 0) {
+		Comics.retrieveComics(getComics);	
+	}	
 
 }]);

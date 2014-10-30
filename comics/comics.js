@@ -1,13 +1,17 @@
 var app = angular.module('comics', []);
 
-app.factory('Comics', [function() {
-	var comics = [
-		{id: 0, title: 'Superman', description: 'A superhero', available: 3, imageName: 'superman.jpg'},
-		{id: 1, title: 'Batman', description: 'Another superhero', available: 3, imageName: 'batman.png'},
-		{id: 2, title: 'The Simpsons', description: 'The best tv show ever', available: 3, imageName: 'simpsons.jpg'},
-		{id: 3, title: 'Biclops', description: 'A superhero with glasses', available: 3, imageName: 'biclops.png'},
-		{id: 4, title: 'SpiderMan', description: 'Another another hero', available: 3, imageName: 'spiderman.jpg'},
-	];
+app.factory('Comics', ['$http', function($http) {
+
+	var comics = [];
+
+	var retrieveComics = function(retrieveComicCallback) {
+		var onGetComicSuccess = function(response) {
+			comics = response.data;
+			retrieveComicCallback();
+		};
+		return $http.get('json/comics.json')
+			.then(onGetComicSuccess);
+	};
 
 	var getComic = function(id) {
 		return comics[id];
@@ -60,18 +64,12 @@ app.factory('Comics', [function() {
 		deleteComic: deleteComic,
 		lendComic: lendComic,
 		receiveComic: receiveComic,
-		updateComic: updateComic
+		updateComic: updateComic,
+		retrieveComics: retrieveComics
 	};
 }])
 
 .controller('ComicsCtrl', ['$scope', 'Comics', 'Friends', 'Loans', function($scope, Comics, Friends, Loans) {
-
-	$scope.comics = Comics.getAllComics();
-	$scope.friends = Friends.getAllFriends();
-	var oldComic = null;
-
-	var isEditing = false;
-	var isLoaning = false;
 
 	$scope.lendComic = function(comic, friendLoan) {
 		Comics.lendComic(comic);
@@ -139,5 +137,10 @@ app.factory('Comics', [function() {
 	$scope.setLoaningState = function() {
 		isLoaning = true;
 	};
+
+	//Initialization
+	var oldComic = null;
+	var isEditing = false;
+	var isLoaning = false;
 
 }]);

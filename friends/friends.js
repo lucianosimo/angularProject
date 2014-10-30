@@ -1,11 +1,17 @@
 var app = angular.module('friends', []);
 
-app.factory('Friends', ['Login', function(Login) {
-	var friends  = [
-		{name: 'Luciano', comics: []},
-		{name: 'Nicolas', comics: []},
-		{name: 'Howard', comics: []},
-	];
+app.factory('Friends', ['$http', 'Login', function($http, Login) {
+
+	var friends = [];
+
+	var retrieveFriends = function(retrieveFriendsCallback) {
+		var onGetFriendsSuccess = function(response) {
+			friends = response.data;
+			retrieveFriendsCallback();
+		};
+		return $http.get('json/friends.json')
+			.then(onGetFriendsSuccess);
+	};
 
 	var getAllFriends = function() {
 		return friends;
@@ -44,15 +50,13 @@ app.factory('Friends', ['Login', function(Login) {
 		addFriend: addFriend,
 		deleteFriend: deleteFriend,
 		returnComic: returnComic,
-		receiveComic: receiveComic
+		receiveComic: receiveComic,
+		retrieveFriends: retrieveFriends
 	};
 
 }])
 
 .controller('FriendsCtrl', ['$scope','Friends', 'Comics', function($scope, Friends, Comics) {
-
-	$scope.friends = Friends.getAllFriends();
-	$scope.comics = Comics.getAllComics();
 
 	$scope.addFriend = function() {
 		var friend = $scope.friend;

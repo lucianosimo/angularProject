@@ -1,15 +1,20 @@
 var app = angular.module('login', []);
 
-app.factory('Login', [function() {
+app.factory('Login', ['$http', function($http) {
 
-	var users = [
-		{username: 'sheldon', password: 'bazinga'},
-		{username: 'luciano', password: '1234'},
-		{username: 'guest', password: '1111'},
-	];
+	var users = [];
 	var isUserLoggedIn = false;
 	var isAdmin = false;
 	var loggedUser = '';
+
+	var retrieveUsers = function(retrieveUsersCallback) {
+		var onGetUsersSuccess = function(response) {
+			users = response.data;
+			retrieveUsersCallback();
+		};
+		return $http.get('json/users.json')
+			.then(onGetUsersSuccess);
+	};
 
 	var addUser = function(user) {
 		var newUser = {
@@ -58,7 +63,8 @@ app.factory('Login', [function() {
 		isAdminUser: isAdminUser,
 		setLoggedUser: setLoggedUser,
 		getLoggedUser: getLoggedUser,
-		addUser: addUser
+		addUser: addUser,
+		retrieveUsers: retrieveUsers
 	};
 }]) 
 
