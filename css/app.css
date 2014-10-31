@@ -3,32 +3,36 @@
 }
 
 .comicListWrapper, .friendsWrapper {
-	background-color: #E6E2AF;
+	background-color: #EEEFF7;
 	text-align: center;
 	display: inline-block;
 	padding: 10px;
-	border: 1px solid #A7A37E;
+	border: 1px solid #445878;
 	margin: 5px;
 	width: 325px;
 	vertical-align: top;
 }
 
 .newComicWrapper, .newFriendWrapper {
-	background-color: #E6E2AF;
-	border: 1px solid #A7A37E;
+	background-color: #EEEFF7;
+	border: 1px solid #445878;
 	margin: 20px 20px 5px 5px;
 	padding: 10px;
 }
 
 .loansWrapper, .comicDescriptionWrapper {
-	background-color: #E6E2AF;
-	border: 1px solid #A7A37E;
-	margin-bottom: 10px;
-	padding-left: 10px;
+	background-color: #EEEFF7;
+	border: 1px solid #445878;
+	margin: 0 20px 10px 5px;
+	padding: 10px;
 }
 
 .comicWrapper {
 	text-align: center;
+}
+
+.returnButton {
+	margin-left: 10px;
 }
 
 /*.comicButtonWrapper{
@@ -57,7 +61,8 @@ input.ng-pristine, textarea.ng-pristine {
 }
 
 .jumbotron {
-	background-color: #EFECCA;
+	/*background-color: #EFECCA;*/
+	background-image: url('../images/background.jpg');
 }
 
 .image {
@@ -66,7 +71,7 @@ input.ng-pristine, textarea.ng-pristine {
 }
 
 .thumbnail {
-	background-color: #E6E2AF;
+	background-color: #EEEFF7;
 	display: block;
     margin-left: auto;
     margin-right: auto;
@@ -88,4 +93,17 @@ input.ng-pristine, textarea.ng-pristine {
 
 .userTag {
 	margin: 10px 10px 0 0;
+}
+
+.loginWrapper{
+	background-color: #92CDCF;
+	padding: 20px;
+	margin: 10px;
+}
+
+.titleWrapper {
+	text-align: center;
+	background-color: #92CDCF;
+	padding: 10px;
+	margin: 0px 20px 0 5px;
 }

@@ -2,35 +2,35 @@
  	{
  		"id":0,
  		"title":"Superman",
- 		"description":"A superhero",
+ 		"description":"Rocketed to Earth from the dying planet Krypton, baby Kal-El was found by a farming couple who named the boy Clark Kent and raised him as their own. Discovering his enormous powers, they instilled in him strong moral values and inspired him to become a hero. Superman has super-everything strength, speed, flight, invulnerability as well as his renowned X-ray and heat vision. The most powerful being on the planet, his amazing abilities are also a melancholy reminder of how different he is from the people he is dedicated to protect.",
  		"available":3,
  		"imageName":"superman.jpg"
  	},
 	{
 		"id":1,
 		"title":"Batman",
-		"description":"Another superhero",
+		"description":"Millionaire Bruce Wayne was just a kid when he watched his parents get gunned down during a mugging in Gotham City. The crime would define his life, as he dedicated himself to becoming the world’s greatest weapon against crime, the Batman.",
 		"available":3,
 		"imageName":"batman.png"
 	},
 	{
 		"id":2,
 		"title":"The Simpsons",
-		"description":"The best tv show ever",
+		"description":"Simpsons Comics is a nine issues per year comic book series from United States, based on the animated TV show The Simpsons, published by Matt Groening's Bongo Comics group.",
 		"available":3,
 		"imageName":"simpsons.jpg"
 	},
 	{
 		"id":3,
 		"title":"Biclops",
-		"description":"A superhero with glasses",
+		"description":"Biclops is a comic book superhero noted for wearing thick glasses. Biclops comics are published by LensCrafters.",
 		"available":3,
 		"imageName":"biclops.png"
 	},
 	{
 		"id":4,
 		"title":"SpiderMan",
-		"description":"Another another hero",
+		"description":"Peter Parker was bitten by a radioactive spider while in high school, the spider bite caused him to develop powers and abilities similar to that of a spider. He was soon able to crawl up walls and sense imminent danger, and eventually even developed his own method of creating webs to swing from. Upon the death of his Uncle Ben due to Peter's indifference, Peter decided that With Great Power comes Great Responsibility, and thus became Spider-Man.",
 		"available":3,
 		"imageName":"spiderman.jpg"
 	}

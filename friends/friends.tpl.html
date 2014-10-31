@@ -1,11 +1,13 @@
-<h2>Friends page</h2>
+<div class="titleWrapper">
+	<h2>Friends page</h2>
+</div>
 
 <div class="friendsWrapper" ng-repeat="friend in friends" ng-controller="FriendsCtrl">
 	<h3>{{ friend.name }}</h3>
 	<h4>Comics from sheldon:</h4>
 	<div class="comicsToReturn" ng-repeat="comic in friend.comics track by $index">
 		<strong>Title: {{comic.title}}</strong>
-		<button class="btn btn-success" ng-click="returnComic(comic, friend)">Return</button>
+		<button class="btn btn-success btn-sm returnButton" ng-click="returnComic(comic, friend)">Return</button>
 	</div><br>
 	<button class="btn btn-danger" ng-click="deleteFriend(friend)">Delete {{ friend.name }}</button>
 </div>

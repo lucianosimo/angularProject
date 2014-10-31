@@ -1,5 +1,7 @@
-<h2>Comics page</h2>
-<h3>List of comics</h3>
+<div class="titleWrapper">
+	<h2>Comics page</h2>
+	<h3>List of comics</h3>
+</div>
 <div class="comicListWrapper" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
 	<h3><a href="#/comic/{{ comic.id }}">{{ comic.title }}</a></h3>
 	<div class="thumbnail">
@@ -9,7 +11,7 @@
     </div>
     <div class="comicInfo">
     	<p>Available: {{ comic.available }}</p>
-		<p>{{ comic.description }}</p>
+		<p>{{ comic.description | limitTo : 50 }}...</p>
     </div>
 	<div class="comicButtonWrapper" ng-hide="!isAdmin() || isEditing() || isLoaning()">
 		<button class="btn btn-primary" ng-click="setLoaningState()" ng-if="comic.available > 0">Lend comic</button>
