@@ -8,15 +8,15 @@
 	display: inline-block;
 	padding: 10px;
 	border: 1px solid #445878;
-	margin: 5px;
-	width: 325px;
+	/*margin: 5px;*/
+	/*width: 325px;*/
 	vertical-align: top;
 }
 
 .newComicWrapper, .newFriendWrapper {
 	background-color: #EEEFF7;
 	border: 1px solid #445878;
-	margin: 20px 20px 5px 5px;
+	/*margin: 20px 20px 5px 5px;*/
 	padding: 10px;
 }
 
@@ -105,5 +105,5 @@ input.ng-pristine, textarea.ng-pristine {
 	text-align: center;
 	background-color: #92CDCF;
 	padding: 10px;
-	margin: 0px 20px 0 5px;
+	/*margin: 0px 20px 0 5px;*/
 }

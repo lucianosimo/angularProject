@@ -1,38 +1,40 @@
-<div class="titleWrapper">
+<div class="row titleWrapper">
 	<h2>Comics page</h2>
 	<h3>List of comics</h3>
 </div>
-<div class="comicListWrapper" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
-	<h3><a href="#/comic/{{ comic.id }}">{{ comic.title }}</a></h3>
-	<div class="thumbnail">
-    	<a href="#/comic/{{ comic.id }}">
-        	<img class="image" src="images/{{ comic.imageName }}">
-      	</a>
-    </div>
-    <div class="comicInfo">
-    	<p>Available: {{ comic.available }}</p>
-		<p>{{ comic.description | limitTo : 50 }}...</p>
-    </div>
-	<div class="comicButtonWrapper" ng-hide="!isAdmin() || isEditing() || isLoaning()">
-		<button class="btn btn-primary" ng-click="setLoaningState()" ng-if="comic.available > 0">Lend comic</button>
-		<button class="btn btn-default" ng-click="setEditComicState(comic)">Edit</button>
-		<button class="btn btn-danger" ng-click="deleteComic(comic)">Delete</button>
-	</div>	
-	<div ng-show="isEditing()">
-		<form name="updateComicForm" novalidate>
-			<input type="text" class="form-control" ng-model="comic.title"> <br>
-			<textarea class="form-control" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
-			<button ng-disabled="updateComicForm.$invalid || isUnchanged(comic)" class="btn btn-success" ng-click="updateComic(comic)">Update comic</button>
-			<button class="btn btn-danger" ng-click="cancelEditedComic()">Cancel</button>
-		</form>
-	</div>
-	<div ng-show="isLoaning()">
-		<select class="form-control" ng-init="friendLoan = friends[0]" ng-model="friendLoan" ng-options="friend.name for friend in friends"></select><br>
-		<button class="btn btn-success" ng-click="lendComic(comic, friendLoan)">Lend comic to {{ friendLoan.name }}</button>
-		<button class="btn btn-danger" ng-click="cancelLendComic()">Cancel</button>
+<div class="row">
+	<div class="comicListWrapper col-xs-12 col-sm-6 col-md-4" ng-repeat="comic in comics" ng-controller="ComicsCtrl">
+		<h3><a href="#/comic/{{ comic.id }}">{{ comic.title }}</a></h3>
+		<div class="thumbnail">
+	    	<a href="#/comic/{{ comic.id }}">
+	        	<img class="image" src="images/{{ comic.imageName }}">
+	      	</a>
+	    </div>
+	    <div class="comicInfo">
+	    	<p>Available: {{ comic.available }}</p>
+			<p>{{ comic.description | limitTo : 50 }}...</p>
+	    </div>
+		<div class="comicButtonWrapper" ng-hide="!isAdmin() || isEditing() || isLoaning()">
+			<button class="btn btn-primary" ng-click="setLoaningState()" ng-if="comic.available > 0">Lend comic</button>
+			<button class="btn btn-default" ng-click="setEditComicState(comic)">Edit</button>
+			<button class="btn btn-danger" ng-click="deleteComic(comic)">Delete</button>
+		</div>	
+		<div ng-show="isEditing()">
+			<form name="updateComicForm" novalidate>
+				<input type="text" class="form-control" ng-model="comic.title"> <br>
+				<textarea class="form-control" rows="10" cols="30" ng-model="comic.description"></textarea> <br>
+				<button ng-disabled="updateComicForm.$invalid || isUnchanged(comic)" class="btn btn-success" ng-click="updateComic(comic)">Update comic</button>
+				<button class="btn btn-danger" ng-click="cancelEditedComic()">Cancel</button>
+			</form>
+		</div>
+		<div ng-show="isLoaning()">
+			<select class="form-control" ng-init="friendLoan = friends[0]" ng-model="friendLoan" ng-options="friend.name for friend in friends"></select><br>
+			<button class="btn btn-success" ng-click="lendComic(comic, friendLoan)">Lend comic to {{ friendLoan.name }}</button>
+			<button class="btn btn-danger" ng-click="cancelLendComic()">Cancel</button>
+		</div>
 	</div>
 </div>
-<div class="newComicWrapper" ng-show="isAdmin()">
+<div class="row newComicWrapper" ng-show="isAdmin()">
 	<h3>Add new comic</h3>
 	<form name="newComicForm" ng-submit="newComicForm.$valid && addComic()" novalidate>
 		<div class="form-group">
